@@ -7,11 +7,11 @@ require 'commands/version'
 Gem::Specification.new do |spec|
   spec.name = 'Commands'
   spec.version = Commands::VERSION
-  spec.authors = []
-  spec.email = [""]
+  spec.authors = ['Evvnt Dev Team']
+  spec.email = ['dev@evvnt.com']
 
   spec.summary = 'Commands Ruby'
-  spec.homepage = 'http://github.com/rx/presenters'
+  spec.homepage = 'http://github.com/rhetprieto/command_ruby'
   spec.license = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'dry-validation', '~> 0.10.5'
-  spec.add_runtime_dependency 'dry-configurable', '~> 0.7.0'
+  spec.add_runtime_dependency 'zeitwerk', '~> 2.1'
+  spec.add_runtime_dependency 'activesupport', '>= 5.0'
 
   spec.add_development_dependency 'pry', '~>0.10'
   spec.add_development_dependency 'bundler', '>= 1.13'

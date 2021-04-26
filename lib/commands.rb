@@ -1,4 +1,5 @@
 # frozen_string_literal: true
 
-# Version
-require "commands/version"
+require 'zeitwerk'
+loader = Zeitwerk::Loader.for_gem
+loader.setup

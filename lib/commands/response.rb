@@ -1,5 +1,3 @@
-#require_relative 'messages'
-
 module Commands
   class Response
     attr_reader :data, :status, :messages

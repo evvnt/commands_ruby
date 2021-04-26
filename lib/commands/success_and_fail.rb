@@ -1,6 +1,3 @@
-#require_relative 'codes'
-#require_relative 'response'
-
 module Commands
   module SuccessAndFail
     def success(data: [], warnings: {}, snackbar: [])

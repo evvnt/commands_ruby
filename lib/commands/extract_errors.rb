@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string/inflections'
+
 module Commands
   module ExtractErrors
     def extract_fk_errors(e, error: false)
