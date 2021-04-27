@@ -5,13 +5,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'commands/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'Commands'
+  spec.name = 'commands_ruby'
   spec.version = Commands::VERSION
   spec.authors = ['Evvnt Dev Team']
   spec.email = ['dev@evvnt.com']
 
   spec.summary = 'Commands Ruby'
-  spec.homepage = 'http://github.com/rhetprieto/command_ruby'
+  spec.homepage = 'http://github.com/evvnt/commands_ruby'
   spec.license = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
