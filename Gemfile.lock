@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    commands_ruby (0.0.1)
+    commands (0.0.1)
       activesupport (>= 5.0)
       zeitwerk (~> 2.1)
 
@@ -46,7 +46,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (>= 1.13)
-  commands_ruby!
+  commands!
   pry
   rspec
 

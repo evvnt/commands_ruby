@@ -1,5 +1,3 @@
-require 'prefatory'
-
 module Commands
   module PreliminaryRepo
     def preliminary_repo(key_prefix = 'prefatory')
