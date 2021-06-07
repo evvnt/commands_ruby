@@ -9,7 +9,7 @@ module Commands
     # UnableToFind or AR::RecordNotFound is a logical error
     # Foreign key violations - might be logical so we handle them as such
     # Anything else is logged, honey badger is notified and a 500 is returned.
-    def rescue_logical_errors(error: false, &block)
+    def rescue_logical_errors(error: true, &block)
       begin
         block.call
       rescue Errors::LogicalError => e
