@@ -18,7 +18,7 @@ module Commands
         fail(errors: extract_errors(e, error: error), status: 404)
       rescue ActiveRecord::InvalidForeignKey => e
         fail(errors: extract_fk_errors(e, error: error), status: 422)
-      rescue Errors::NotAuthorizedException
+      rescue Errors::NotAuthorizedException => e
         report_and_log_exception(e, 403)
       rescue StandardError => e
         report_and_log_exception(e, 500)
