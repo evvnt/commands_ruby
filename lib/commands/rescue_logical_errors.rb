@@ -18,12 +18,20 @@ module Commands
         fail(errors: extract_errors(e, error: error), status: 404)
       rescue ActiveRecord::InvalidForeignKey => e
         fail(errors: extract_fk_errors(e, error: error), status: 422)
+      rescue Errors::NotAuthorizedException
+        report_and_log_exception(e, 403)
       rescue StandardError => e
-        report_exception(e)
-        log_exception(e)
-
-        fail(errors: e.message, status: 500)
+        report_and_log_exception(e, 500)
       end
+    end
+
+    private
+
+    def report_and_log_exception(e, status)
+      report_exception(e)
+      log_exception(e)
+
+      fail(errors: e.message, status: status)
     end
   end
 end
