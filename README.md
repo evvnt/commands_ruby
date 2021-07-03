@@ -14,7 +14,7 @@ gem 'commands_ruby'
 
 ### Basic usage
 
-Write your service object class, which must inherit from `Commands::Base` and must define
+Write your command object class, which must inherit from `Commands::Base` and must define
 a `call` instance method.
 
 ```ruby
