@@ -15,7 +15,7 @@ module Commands
     end
 
     def extract_errors(e, error: false)
-      return e.form_errors if e.respond_to?(:form_errors) && e.form_errors.any?
+      return e.form_errors if e.respond_to?(:form_errors) && e.form_errors.present?
       {error_key(error) => e.message.gsub('ActiveRecord::','').titleize}
     end
 
