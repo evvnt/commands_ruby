@@ -14,7 +14,7 @@ module Commands
         block.call
       rescue Errors::LogicalError => e
         fail(errors: extract_errors(e, error: error), status: 422)
-      rescue ActiveRecord::RecordNotFound => e
+      rescue ActiveRecord::RecordNotFound, ActiveRecord::RecordInvalid => e
         fail(errors: extract_errors(e, error: error), status: 404)
       rescue ActiveRecord::InvalidForeignKey => e
         fail(errors: extract_fk_errors(e, error: error), status: 422)
