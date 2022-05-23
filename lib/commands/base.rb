@@ -1,50 +1,23 @@
+require 'commands/responses'
+
 module Commands
-  class Base
-    class << self
-      # This should ONLY be called at the controller or top level. It eats exceptions!
-      # When this is called you should check the response object for success/failure
-      def call(**params)
-        rescue_logical_errors {new(params).call}
-      end
-
-      # convenience method for new(params).call
-      def call!(**params)
-        new(params).call
-      end
-
-      include Commands::ExtractErrors
-      include Commands::RescueLogicalErrors
-    end
-    # @depreciated
-    attr_reader :dependencies
-
-    def initialize(**params)
-      @dependencies = default_dependencies.merge(params[:dependencies]||{})
+  # TODO: rename me
+  module Base
+    def self.extended(base)
+      base.include Commands::Responses
     end
 
-    # @depreciated
-    def call_workflow(_name_, **params)
-      @dependencies[_name_].new(params).call
+    # call the command, rescuing from raised errors and instead returning +Commands::Response::Err+.
+    def call(params)
+      new(params).call
+    rescue StandardError => e
+      Commands::Response::Err.new(e)
     end
 
-    private
-
-    include Helpers
-    include Logging::Tracing
-    include Commands::AggregateValidations
-    include Commands::Namespace
-    include Commands::SuccessAndFail
-
-    def transaction
-      ActiveRecord::Base.transaction do
-        yield
-      end
-    end
-
-    # @depreciated
-    def default_dependencies
-      {}
+    # call! runs the command, raising on failure instead of wrapping the result in a
+    # +Commands::Response::Err+.
+    def call!(params)
+      call(params).or_else { |error| raise error }
     end
   end
 end
-

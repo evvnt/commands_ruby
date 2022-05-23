@@ -1,19 +1,15 @@
 module Commands
+  # Messages contains metadata (warnings and info) for a +Commands::Response+.
   class Messages
-    attr_reader :warnings, :errors, :snackbar
+    attr_reader :warnings, :info
 
-    def initialize(errors: {}, warnings: {}, snackbar: [])
-      @errors = errors
-      @warnings = warnings
-      @snackbar = Array(snackbar)
+    def initialize(warnings: [], info: [])
+      @warnings = Array(warnings)
+      @info = Array(info)
     end
 
     def to_h
-      {
-          errors: errors,
-          warnings: warnings,
-          snackbar: snackbar
-      }
+      { warnings: warnings, info: info }
     end
   end
 end
