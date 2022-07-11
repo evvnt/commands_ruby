@@ -1,3 +1,5 @@
+require 'honeybadger'
+
 module Commands
   module Logging
     module Logger
