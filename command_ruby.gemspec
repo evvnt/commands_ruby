@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'zeitwerk', '~> 2.1'
   spec.add_runtime_dependency 'activesupport', '>= 5.0'
+  spec.add_runtime_dependency 'honeybadger', '>= 4.12'
 
   spec.add_development_dependency 'pry', '~>0.10'
   spec.add_development_dependency 'bundler', '>= 1.13'
